@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP - Full-Stack</title>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- inter google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <!-- poppins google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <div>
+                    <a class="navbar-brand" href="#heroSection"><img src="assets/logoWhiteNB.png" alt="Logo"
+                            class="logo"></a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <button class="lightButton poppins-semibold"
+                        onclick="window.open('https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main', '_blank', 'noopener noreferrer');">
+                        View on GitHub
+                    </button>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- hero section -->
+        <section class="row gx-0 heroSection">
+
+            <!-- left div -->
+            <div class="col-md-8 heroLeftDiv">
+                <h1>The Odin Project - Full Stack JavaScript</h1>
+                <p>This repository contains exercises, small projects, and notes completed while following <a
+                        href="https://www.theodinproject.com/">The Odin Project</a> curriculum.</p>
+                <p><small>⚠️⚠️⚠️ Major projects are extracted into standalone repositories. ⚠️⚠️⚠️</small></p>
+                <div class="heroButtonDiv">
+                    <button class="darkButton"
+                        onclick="window.open('https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main', '_blank', 'noopener noreferrer');">
+                        View on GitHub
+                    </button>
+                    <button class="lightButton githubButton"
+                        onclick="window.open('https://github.com/Anaid-Ariwany', '_blank', 'noopener noreferrer');">
+                        GitHub Profile
+                    </button>
+                </div>
+            </div>
+
+            <!-- right div -->
+            <div class="col-md-4 heroRightDiv">
+                <h2>Sections</h2>
+                <p><small>Click any section to open it on the repo.</small></p>
+                <div class="skillsDiv">
+                    <!-- <h5><span class="badge"><img src="assets/html5.webp" alt="HTML5" class="techIcon"></span>
+                        <a href="https://github.com/Anaid-Ariwany/The-Odin-Project-Learning/tree/main/HTML"
+                            target="_blank" rel="noopener noreferrer">HTML Repo</a>
+                    </h5>
+
+                    <h5><span class="badge"><img src="assets/css3.webp" alt="CSS3" class="techIcon"></span>
+                        <a href="https://github.com/Anaid-Ariwany/The-Odin-Project-Learning/tree/main/CSS"
+                            target="_blank" rel="noopener noreferrer">CSS
+                            Repo</a>
+                    </h5>
+
+                    <h5><span class="badge"><img src="assets/javascript.webp" alt="JavaScript" class="techIcon"></span>
+                        <a href="https://github.com/Anaid-Ariwany/The-Odin-Project-Learning/tree/main/JavaScript"
+                            target="_blank" rel="noopener noreferrer">JS
+                            Repo</a>
+                    </h5>
+ -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- projects section -->
+        <section class="projectSection" id="projectSection">
+            <h2 class="poppins-semibold">Projects</h2>
+            <div class="projectContainer"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Anaid Ariwany.</p>
+        <p>All rights reserved.</p>
+    </footer>
+
+    <!-- js -->
+    <script src="script.js"></script>
+
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
