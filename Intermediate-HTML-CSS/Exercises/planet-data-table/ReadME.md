@@ -17,7 +17,7 @@ All the data you need is contained in the data listing provided above. If you ha
 
 6. Add attributes to make the row and column headers unambiguously associated with the rows, columns, or row groups that they act as headings for.
 
-7. Add a black border just around the column that contains all the planet name row headers. Do this using a suitable <colgroup>/<col> structure and the .column-border class style provided in the CSS.
+7. Add a black border just around the column that contains all the planet name row headers. Do this using a suitable `<colgroup>/<col>` structure and the .column-border class style provided in the CSS.
 
 ### Hints & Tips
 - The first cell of the header row needs to be blank, and span two columns.
@@ -25,3 +25,7 @@ All the data you need is contained in the data listing provided above. If you ha
 - The group row headings (e.g., Jovian planets) that sit to the left of the planet name row headings (e.g., Saturn) are a little tricky to sort out — you need to make sure each one spans the correct number of rows and columns.
 
 - One way of associating headers with their rows/columns is a lot easier than the other way.
+
+### Desired Outcome
+![alt text](desiredOutcome1.webp)  ![alt text](desiredOutcome2.webp)
+
