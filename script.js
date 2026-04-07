@@ -3,7 +3,7 @@ const projects = [
         name: "",
         description: "",
         image: "",
-        live: "https://anaid-ariwany.github.io/The-Odin-Project-Learning/HTML/Projects/Recipes/",
+        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/HTML/Projects/Recipes/",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Learning/tree/main/HTML/Projects/Recipes",
         source: ""
     }

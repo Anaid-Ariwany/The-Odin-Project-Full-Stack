@@ -15,8 +15,8 @@ This repository contains the fundamentals learning path, which includes projects
 Each assignment and project is designed to reinforce the skills learned in the curriculum and provide practical experience in building web applications.
 
 ### Folder Structure
-HTML/: Contains HTML projects and exercises.
-CSS/: Contains CSS projects and exercises.
+HTML/: Contains intermediate and advanced HTML projects and exercises.
+CSS/: Contains intermediate and advanced CSS projects and exercises.
 JavaScript/: Contains JavaScript projects and exercises.
 ./Projects/: Contains larger projects that integrate multiple skills.
 
