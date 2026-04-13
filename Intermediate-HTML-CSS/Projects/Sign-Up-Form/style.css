@@ -1,28 +1,143 @@
 @font-face {
-    font-family: 'Norse';
-    src: url('assets/norseFont/Norse.otf') format('truetype');
-}
-
-@font-face {
     font-family: 'NorseBold';
     src: url('assets/norseFont/Norsebold.otf') format('truetype');
 }
 
+@import url(https://fonts.bunny.net/css?family=inter:400);
+
 :root {
     --background-color: #F9FAFB;
-    --form-background-color: #FDFDFD;
+    --form-background-color: #FFFFFF;
 
     --button-color: #596D48;
     --input-border-color: #E5E7EB;
     --input-focus-border-color: #2856DA;
     --input-invalid-border-color: #CA5353;
 
-    --body-font: 'Norse', sans-serif;
+    --body-font: 'Inter', sans-serif;
     --heading-font: 'NorseBold', sans-serif;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-family: var(--body-font);
+}
+
+main {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ##### left section ##### */
 .leftSection {
     background-image: url('assets/backgroundImage.webp');
     background-size: cover;
     background-position: center;
+    width: 35%;
+}
+
+.logoDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    padding: 0.5rem 0;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+.logoDiv img {
+    width: 8rem;
+    height: auto;
+}
+
+.logoDiv h1 {
+    font-family: var(--heading-font);
+    color: var(--form-background-color);
+    font-size: 5rem;
+}
+
+
+/* ##### right section ##### */
+.rightSection {
+    width: 60%;
+}
+
+.textDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 2rem;
+    margin-top: 2rem;
+    font-weight: bold;
+    max-width: 80%;
+}
+
+form {
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+.formFieldsDiv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.formFieldsDiv div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+form label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #374151;
+    font-style: uppercase;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid var(--input-border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: var(--input-focus-border-color);
+    box-shadow: 0 0 0 2px rgba(40, 86, 218, 0.2);
+    outline: none;
+}
+
+input:user-invalid {
+    border-color: var(--input-invalid-border-color);
+    box-shadow: 0 0 0 2px rgba(202, 83, 83, 0.2);
+}
+
+.loginDiv button {
+    padding: 0.75rem 1rem;
+    background-color: var(--button-color);
+    color: var(--form-background-color);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.loginDiv a {
+    color: var(--button-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
 }

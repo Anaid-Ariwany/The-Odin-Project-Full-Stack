@@ -17,47 +17,64 @@
         <section class="leftSection">
             <div class="logoDiv">
                 <img src="assets/odin-lined-logo.webp" alt="odin-lined logo">
+                <h1>ODIN</h1>
             </div>
         </section>
 
         <!-- right section -->
-        <section>
-            <div>
+        <section class="rightSection">
+            <div class="textDiv">
                 <p>This is not a real online service! You know you need something like this in your life to help you
-                    realize your deepest dreams.</p>
-                <p>Sign up <em>now</em> to get started.</p>
+                    realize your deepest dreams. Sign up <em>now</em> to get started.</p>
                 <p>You <em>know</em> you want to.</p>
             </div>
 
-            <div>
-                <form>
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
 
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+            <form>
+                <h3>Let's do this!</h3>
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                <div class="formFieldsDiv">
 
-                    <label for="phoneNumber">Phone Number</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number"
-                        required>
+                    <div>
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+                    </div>
 
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <div>
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                    </div>
 
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword"
-                        placeholder="Confirm your password" required>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                    </div>
 
-                </form>
-            </div>
+                    <div>
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+2547******85" required>
+                    </div>
 
-            <div>
-                <button type="submit">Sign Up</button>
-                <p>Already have an account? <a href="#">Log in</a></p>
-            </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div>
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword"
+                            placeholder="Confirm your password" required>
+                    </div>
+
+                </div>
+
+                <div class="loginDiv">
+                    <button type="submit">Create Account</button>
+                    <p>Already have an account? <a href="#">Log in</a></p>
+                </div>
+            </form>
+
+
         </section>
     </main>
 </body>
