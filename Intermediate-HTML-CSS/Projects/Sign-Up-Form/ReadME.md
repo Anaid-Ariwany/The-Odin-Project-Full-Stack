@@ -1,5 +1,7 @@
 # Sign-Up Form
 
+[Live Demo](https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Intermediate-HTML-CSS/Projects/Sign-Up-Form)
+
 ### Instructions
 
 #### Step 1: Set up and planning
