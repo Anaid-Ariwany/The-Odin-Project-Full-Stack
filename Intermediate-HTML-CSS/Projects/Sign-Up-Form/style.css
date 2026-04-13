@@ -22,7 +22,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     letter-spacing: 1px;
     font-family: var(--body-font);
 }
@@ -80,15 +80,21 @@ main {
 }
 
 form {
-    padding: 1rem 2rem;
+    padding-top: 1rem;
     width: 100%;
+    background-color: var(--form-background-color);
+}
+
+form h3 {
+    padding: 0 2rem;
 }
 
 .formFieldsDiv {
+    padding: 1rem 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
 }
 
 .formFieldsDiv div {
@@ -121,6 +127,18 @@ input:focus {
 input:user-invalid {
     border-color: var(--input-invalid-border-color);
     box-shadow: 0 0 0 2px rgba(202, 83, 83, 0.2);
+    outline: none;
+}
+
+.loginDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: var(--background-color);
+    box-shadow: 0 -8px 8px -6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    border: none;
 }
 
 .loginDiv button {
@@ -133,6 +151,7 @@ input:user-invalid {
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    max-width: max-content;
 }
 
 .loginDiv a {
