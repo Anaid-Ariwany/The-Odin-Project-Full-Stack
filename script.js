@@ -1,10 +1,18 @@
 const projects = [
     {
+        name: "Sign-Up Form",
+        description: "A sign-up form with validation.",
+        image: "assets/projects/sign-up-form.webp",
+        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Intermediate-HTML-CSS/Projects/Sign-Up-Form",
+        github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/Intermediate-HTML-CSS/Projects/Sign-Up-Form",
+        source: "https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-sign-up-form"
+    },
+    {
         name: "",
         description: "",
         image: "",
-        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/HTML/Projects/Recipes/",
-        github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Learning/tree/main/HTML/Projects/Recipes",
+        live: "",
+        github: "",
         source: ""
     }
 ];
