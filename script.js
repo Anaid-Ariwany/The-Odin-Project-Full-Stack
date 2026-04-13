@@ -7,14 +7,14 @@ const projects = [
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/Intermediate-HTML-CSS/Projects/Sign-Up-Form",
         source: "https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-sign-up-form"
     },
-    {
+    /* {
         name: "",
         description: "",
         image: "",
         live: "",
         github: "",
         source: ""
-    }
+    } */
 ];
 
 
