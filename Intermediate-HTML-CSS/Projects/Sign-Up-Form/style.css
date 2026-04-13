@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Norse';
+    src: url('assets/norseFont/Norse.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'NorseBold';
+    src: url('assets/norseFont/Norsebold.otf') format('truetype');
+}
+
+:root {
+    --background-color: #F9FAFB;
+    --form-background-color: #FDFDFD;
+
+    --button-color: #596D48;
+    --input-border-color: #E5E7EB;
+    --input-focus-border-color: #2856DA;
+    --input-invalid-border-color: #CA5353;
+
+    --body-font: 'Norse', sans-serif;
+    --heading-font: 'NorseBold', sans-serif;
+}
+
+.leftSection {
+    background-image: url('assets/backgroundImage.webp');
+    background-size: cover;
+    background-position: center;
+}
