@@ -2,8 +2,6 @@
 
 ## Instructions
 
-
-
 ### Step 1: Set up and planning
 1. Set up your Git repository (refer to past projects if you need a refresher).
 
@@ -48,3 +46,7 @@
 4. You don’t have to make a pixel perfect match with the design example. Consider this an opportunity to practice your CSS skills with your own designs.
 
 5. Don’t forget to push your finished dashboard to GitHub. Use GitHub Pages to publish it to the world!
+
+
+## Desired Outcome
+![alt text](assets/desiredOutcome.webp)
