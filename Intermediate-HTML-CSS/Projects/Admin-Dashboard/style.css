@@ -4,6 +4,9 @@
     --secondary-color: #FFFFFF;
     --hover-color: #035683;
     --morgan: #FBBF24;
+    --tegan: #87ceeb;
+    --kendall: #808080;
+    --alex: #ffc0cb;
 }
 
 * {
@@ -169,21 +172,6 @@ li {
     align-items: center;
 }
 
-.morganProfile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--morgan);
-    border-radius: 50%;
-    padding: 0.5rem;
-}
-
-.morganInfo {
-    display: grid;
-    grid-template-rows: max-content max-content;
-    grid-gap: 0;
-}
-
 .morganInfo p {
     margin-bottom: 0;
 }
@@ -224,6 +212,7 @@ li {
     justify-content: end;
     background-color: var(--secondary-color);
     border-top: none;
+    padding-bottom: 1rem;
 }
 
 .projectIcon {
@@ -231,6 +220,84 @@ li {
     height: 20px;
     cursor: pointer;
 }
+
+.updatesDiv {
+    display: grid;
+    grid-template-rows: max-content max-content;
+    gap: 1rem;
+}
+
+.announcementCard,
+.trendingCard {
+    border-left: 5px solid var(--primary-color);
+    border-radius: 0.5rem;
+    width: 18rem;
+    margin-top: 0.5rem;
+}
+
+.trendingCard {
+    padding: 1rem;
+}
+
+
+/* ##### trending card profiles styling ##### */
+.cardProfileDiv {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.morganProfile,
+.teganProfile,
+.kendallProfile,
+.alexProfile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+.morganInfo,
+.teganInfo,
+.kendallInfo,
+.alexInfo {
+    display: grid;
+    grid-template-rows: max-content max-content;
+    grid-gap: 0;
+}
+
+.morganInfo p,
+.teganInfo p,
+.kendallInfo p,
+.alexInfo p {
+    margin-bottom: 0;
+}
+
+.morganInfo h5 {
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.morganProfile {
+    background-color: var(--morgan);
+}
+
+.teganProfile {
+    background-color: var(--tegan);
+}
+
+.kendallProfile {
+    background-color: var(--kendall);
+}
+
+.alexProfile {
+    background-color: var(--alex);
+}
+
 
 /* ##### sidebar styling ##### */
 /* ##### sidebar styling ##### */
