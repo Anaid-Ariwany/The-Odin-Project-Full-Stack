@@ -12,6 +12,15 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+main {
+    background-color: var(--background-color);
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 0.5fr 4fr;
 }
 
 li {
@@ -22,12 +31,26 @@ li {
 .sidebarLogoIcon {
     width: 50px;
     height: 50px;
+    /* change icon color to white */
+    filter: invert(1);
 }
 
 .sidebarIcon {
     width: 30px;
     height: 30px;
+    /* change icon color to white */
+    filter: invert(1);
 }
+
+.sidebar {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 5rem 16rem 15rem;
+    grid-gap: 2rem;
+}
+
 
 /* ##### header styling ##### */
 .profileIcon {
@@ -35,7 +58,40 @@ li {
     height: 40px;
 }
 
-/* ##### sidebar styling ##### */
+.headerSection {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.topHeaderDiv {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.bottomHeaderDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.buttonsDiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+/* ##### main content styling ##### */
+.mainContentSection {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 0.5rem;
+}
+
+.projectCardDiv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
 /* ##### sidebar styling ##### */
 /* ##### sidebar styling ##### */
 /* ##### sidebar styling ##### */
