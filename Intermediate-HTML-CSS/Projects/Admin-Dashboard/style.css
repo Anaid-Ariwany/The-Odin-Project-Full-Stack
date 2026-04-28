@@ -3,12 +3,12 @@
     --background-color: #E2E8F0;
     --secondary-color: #FFFFFF;
     --hover-color: #035683;
+    --morgan: #FBBF24;
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
@@ -19,7 +19,6 @@ body {
 
 main {
     background-color: var(--background-color);
-    padding: 1rem;
     display: grid;
     grid-template-rows: 0.5fr 4fr;
 }
@@ -76,36 +75,131 @@ li {
 
 /* ##### header styling ##### */
 .profileIcon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .headerSection {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 50% 50%;
+    grid-gap: 1rem;
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .topHeaderDiv {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 60% 30%;
 }
 
 .bottomHeaderDiv {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
 }
 
 .buttonsDiv {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-template-columns: max-content max-content max-content;
+    grid-template-rows: max-content;
+    align-items: end;
+    justify-content: end;
+    grid-gap: 1rem;
 }
+
+.buttonsDiv button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.buttonsDiv button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+.headerIcon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.searchInput {
+    width: 60%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: var(--background-color);
+    cursor: not-allowed;
+}
+
+.topProfileDiv {
+    display: grid;
+    grid-template-columns: 30% 60%;
+    grid-template-rows: max-content;
+    justify-items: end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.topProfileDiv h6 {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.topProfileDiv h6 span {
+    background-color: var(--morgan);
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.bottomProfileDiv {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.morganProfile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--morgan);
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+.morganInfo {
+    display: grid;
+    grid-template-rows: max-content max-content;
+    grid-gap: 0;
+}
+
+.morganInfo p {
+    margin-bottom: 0;
+}
+
+.morganInfo h5 {
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
 
 /* ##### main content styling ##### */
 .mainContentSection {
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-gap: 0.5rem;
+    padding: 1rem;
 }
 
 .projectCardDiv {
