@@ -9,7 +9,7 @@ const projects = [
     },
     {
         name: "Admin Dashboard",
-        description: "A simple admin dashboard layout built with CSS Grid and Flexbox.",
+        description: "A simple admin dashboard layout built with CSS Grid.",
         image: "assets/projects/admin-dashboard.webp",
         live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Intermediate-HTML-CSS/Projects/Admin-Dashboard",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/Intermediate-HTML-CSS/Projects/Admin-Dashboard",

@@ -1,5 +1,7 @@
 # Project: Admin Dashboard
 
+[Live Demo](https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Intermediate-HTML-CSS/Projects/Admin-Dashboard/)
+
 ## Instructions
 
 ### Step 1: Set up and planning
