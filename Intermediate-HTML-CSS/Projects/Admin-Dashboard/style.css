@@ -2,6 +2,7 @@
     --primary-color: #1992D4;
     --background-color: #E2E8F0;
     --secondary-color: #FFFFFF;
+    --hover-color: #035683;
 }
 
 * {
@@ -27,6 +28,7 @@ li {
     list-style: none;
 }
 
+
 /* ##### sidebar styling ##### */
 .sidebarLogoIcon {
     width: 50px;
@@ -49,6 +51,26 @@ li {
     display: grid;
     grid-template-rows: 5rem 16rem 15rem;
     grid-gap: 2rem;
+}
+
+.sidebar div h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.sidebar div ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.sidebar div ul li:hover {
+    background-color: color-mix(in srgb, var(--hover-color), transparent 50%);
+    border-radius: 0.5rem;
+    padding: 2px 5px;
 }
 
 
