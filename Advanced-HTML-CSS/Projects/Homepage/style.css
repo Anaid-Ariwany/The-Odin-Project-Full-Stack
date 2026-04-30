@@ -4,6 +4,7 @@
 
     --normal-text-color: #060B04;
     --secondary-text-color: #6b6b6b;
+    --card-background-color: #F5F5F5;
 
     --card1-color: #9E1C1C;
     --card2-color: #7C75CA;
@@ -27,6 +28,8 @@ body {
     font-family: var(--body-font);
     color: var(--normal-text-color);
     background-color: var(--background-color);
+    letter-spacing: 1px;
+    line-height: 1.5;
 }
 
 img {
@@ -54,7 +57,7 @@ header {
     z-index: 2;
     flex: 0 0 445px;
     height: 470px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 .aboutImage {
@@ -91,7 +94,6 @@ header {
 .aboutCard p {
     max-width: 36rem;
     color: var(--secondary-text-color);
-    line-height: 1.5;
 }
 
 .socialLinks {
@@ -102,19 +104,116 @@ header {
     padding-top: 32px;
 }
 
-.socialLinks img {
+.socialLinks img,
+.socialIcon {
     width: 25px;
     height: 25px;
     object-fit: contain;
     cursor: pointer;
 }
 
-.socialLinks img:hover {
+.socialLinks img:hover,
+.socialIcon:hover {
     transform: scale(1.15);
 }
 
 
-/* ##### styling ##### */
+/* ##### main content styling ##### */
+main {
+    padding: 3.5rem 4.5rem;
+}
+
+.cardsSection {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-background-color);
+    color: var(--normal-text-color);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.card>.cardColorTop {
+    height: 15rem;
+    border-radius: 0 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardColorTop h2 {
+    color: var(--background-color);
+    font-size: 1.75rem;
+    letter-spacing: 2px;
+    max-width: 45%;
+    font-weight: normal;
+}
+
+/* iterate the background colors of the card */
+.card:nth-child(1) .cardColorTop {
+    background-color: var(--card1-color);
+}
+
+.card:nth-child(2) .cardColorTop {
+    background-color: var(--card2-color);
+}
+
+.card:nth-child(3) .cardColorTop {
+    background-color: var(--card3-color);
+}
+
+.card:nth-child(4) .cardColorTop {
+    background-color: var(--card4-color);
+}
+
+.card:nth-child(5) .cardColorTop {
+    background-color: var(--card5-color);
+}
+
+.card:nth-child(6) .cardColorTop {
+    background-color: var(--card6-color);
+}
+
+.cardProjectInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.projectInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.socialLinksDiv {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+
+.projectInfo h4 {
+    font-size: 1.25rem;
+}
+
+.projectText p {
+    color: var(--secondary-text-color);
+}
+
 /* ##### styling ##### */
 /* ##### styling ##### */
 /* ##### styling ##### */
