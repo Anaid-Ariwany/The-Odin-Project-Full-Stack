@@ -30,6 +30,7 @@ body {
     background-color: var(--background-color);
     letter-spacing: 1px;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
 .heading {
@@ -45,14 +46,17 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 3.5rem 4.5rem;
+    gap: 0;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 6vw, 4.5rem);
 }
 
 .profileCard {
     position: relative;
     z-index: 2;
-    flex: 0 0 445px;
-    height: 470px;
+    flex: 0 1 445px;
+    aspect-ratio: 0.95;
+    min-width: 17rem;
+    max-width: 445px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -68,16 +72,19 @@ header {
     right: 16px;
     bottom: 8px;
     left: 16px;
-    font-size: clamp(2rem, 3vw, 4rem);
+    color: var(--background-color);
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.05;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .aboutCard {
     display: flex;
     flex-direction: column;
+    flex: 1 1 24rem;
     min-height: 365px;
     margin-left: -2px;
-    padding: 50px 48px 32px;
+    padding: clamp(2rem, 4vw, 3.125rem) clamp(1.5rem, 4vw, 3rem) 2rem;
     background: #ffffff;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
 }
@@ -116,15 +123,15 @@ header {
 
 /* ##### main content styling ##### */
 main {
-    padding: 3.5rem 4.5rem;
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1rem, 6vw, 4.5rem);
     margin-bottom: 3rem;
 }
 
 .cardsSection {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 .card {
@@ -152,10 +159,11 @@ main {
 
 .cardColorTop h2 {
     color: var(--background-color);
-    font-size: 1.75rem;
+    font-size: clamp(1.45rem, 3vw, 1.75rem);
     letter-spacing: 2px;
-    max-width: 45%;
+    max-width: 12ch;
     font-weight: normal;
+    text-align: center;
 }
 
 /* iterate the background colors of the card */
@@ -194,6 +202,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .socialLinksDiv {
@@ -205,6 +214,7 @@ main {
 
 .projectInfo h4 {
     font-size: 1.25rem;
+    overflow-wrap: anywhere;
 }
 
 .projectText p {
@@ -214,20 +224,22 @@ main {
 /* ##### footer styling ##### */
 footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 2rem 4.5rem;
+    gap: clamp(2rem, 6vw, 5rem);
+    padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 6vw, 4.5rem);
     background-color: var(--primary-blue);
     color: var(--background-color);
 }
 
 .footerImage {
     display: block;
+    flex: 1 1 20rem;
     width: 100%;
     max-width: 37rem;
-    height: 29rem;
+    aspect-ratio: 1.28;
     object-fit: cover;
-    margin-left: auto;
 }
 
 .footerImage img {
@@ -240,6 +252,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    flex: 1 1 18rem;
+    max-width: 28rem;
 }
 
 .contactDiv h2 {
@@ -253,8 +267,101 @@ footer {
     gap: 12px;
 }
 
-/* ##### styling ##### */
-/* ##### styling ##### */
-/* ##### styling ##### */
-/* ##### styling ##### */
-/* ##### styling ##### */
+.contactDetail p {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+    header {
+        align-items: flex-start;
+        padding-top: 5rem;
+    }
+
+    .profileCard {
+        flex-basis: 19rem;
+        min-width: 15rem;
+        margin-top: -2rem;
+    }
+
+    .aboutCard {
+        margin-top: 2rem;
+    }
+
+    .socialLinks {
+        justify-content: center;
+    }
+
+    footer {
+        align-items: stretch;
+    }
+
+    .footerImage {
+        flex: 1 1 18rem;
+    }
+}
+
+@media (max-width: 700px) {
+
+    header,
+    footer {
+        flex-direction: column;
+    }
+
+    header {
+        background: linear-gradient(160deg, var(--primary-blue) 0 38%, var(--background-color) 38.2% 100%);
+        align-items: center;
+        padding-top: 2rem;
+    }
+
+    .profileCard {
+        width: min(100%, 24rem);
+        min-width: 0;
+        margin-top: 0;
+    }
+
+    .aboutCard {
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        box-shadow: none;
+        text-align: center;
+    }
+
+    .aboutCard p {
+        max-width: none;
+    }
+
+    main>h2,
+    .contactDiv {
+        text-align: center;
+    }
+
+    .contactDetail,
+    .socialLinkDiv {
+        justify-content: center;
+    }
+
+    .footerImage {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    body {
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+
+    .aboutCard h2,
+    .contactDiv h2 {
+        font-size: 2rem;
+    }
+
+    .cardProjectInfo {
+        padding: 1rem;
+    }
+
+    .socialLinksDiv {
+        gap: 14px;
+    }
+}
