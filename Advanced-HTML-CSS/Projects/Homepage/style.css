@@ -1,0 +1,17 @@
+:root {
+    --background-color: #FFFFFF;
+    --primary-blue: #0891B2;
+
+    --normal-text-color: #060B04;
+    --secondary-text-color: #B3B3B2;
+
+    --card1-color: #9E1C1C;
+    --card2-color: #7C75CA;
+    --card3-color: #5E8F4D;
+    --card4-color: #C363B4;
+    --card5-color: #D88F39;
+    --card6-color: #4BA2D2;
+
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Roboto', sans-serif;
+}
