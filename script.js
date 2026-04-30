@@ -14,6 +14,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Intermediate-HTML-CSS/Projects/Admin-Dashboard",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/Intermediate-HTML-CSS/Projects/Admin-Dashboard",
         source: "https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-admin-dashboard"
+    },
+    {
+        name: "Homepage",
+        description: "A responsive homepage layout built with HTML and CSS.",
+        image: "assets/projects/homepage.webp",
+        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Advanced-HTML-CSS/Projects/Homepage",
+        github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/Advanced-HTML-CSS/Projects/Homepage",
+        source: "https://www.theodinproject.com/lessons/node-path-advanced-html-and-css-homepage"
     }
     /* {
         name: "",

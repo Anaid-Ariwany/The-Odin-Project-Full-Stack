@@ -1,5 +1,7 @@
 # Homepage Project
 
+[live Demo](https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Advanced-HTML-CSS/Projects/Homepage/)
+
 ### Instructions
 
 #### Step 1: Set up and planning
