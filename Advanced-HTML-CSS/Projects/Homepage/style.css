@@ -15,3 +15,12 @@
     --heading-font: 'Playfair Display', serif;
     --body-font: 'Roboto', sans-serif;
 }
+
+img {
+    width: 5rem;
+    height: auto;
+}
+
+.heading {
+    font-family: var(--heading-font);
+}
