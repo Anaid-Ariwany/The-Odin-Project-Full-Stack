@@ -22,6 +22,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/Advanced-HTML-CSS/Projects/Homepage",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/Advanced-HTML-CSS/Projects/Homepage",
         source: "https://www.theodinproject.com/lessons/node-path-advanced-html-and-css-homepage"
+    },
+    {
+        name: "Library",
+        description: "A simple library management system built with JavaScript Objects.",
+        image: "assets/projects/library.webp",
+        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Library",
+        github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Library",
+        source: "https://www.theodinproject.com/lessons/node-path-javascript-library"
     }
     /* {
         name: "",

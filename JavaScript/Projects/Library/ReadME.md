@@ -1,5 +1,7 @@
 # Library Project
 
+[Live Demo](https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Library/)
+
 ### Instructions
 
 #### Step 1:
