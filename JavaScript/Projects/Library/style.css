@@ -1,0 +1,172 @@
+/* Library project styles */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, system-ui, -apple-system, 'Helvetica Neue', Arial;
+    background: #f4f7fb;
+    color: #111827;
+    margin: 0;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.library-container {
+    width: 90%;
+    background: #415570;
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+/* Center the add button section and space it from the container */
+section+section {
+    width: 90%;
+    margin-top: 0.75rem;
+    display: flex;
+    justify-content: center;
+}
+
+.add-book-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+    transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.15s ease;
+}
+
+.add-book-btn:hover {
+    background: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12);
+}
+
+.new-book-form {
+    width: 100%;
+    max-width: max-content;
+    margin-top: 0.75rem;
+    background: #415570;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.new-book-form input[type="text"],
+.new-book-form input[type="number"] {
+    padding: 0.56rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.new-book-form input:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.06);
+}
+
+.new-book-form label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.new-book-form button[type="submit"] {
+    padding: 0.5rem 0.9rem;
+    background: #10b981;
+    margin: 0.5rem 0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.new-book-form button[type="submit"]:hover {
+    background: #059669;
+}
+
+/* Book card and action buttons */
+.book {
+    background: #f8fafc;
+    border: 1px solid #e6eef8;
+    padding: 0.9rem;
+    border-radius: 8px;
+    min-width: 180px;
+    max-width: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: start;
+}
+
+.book-buttons {
+    margin-top: auto;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.book .remove-book-btn,
+.book .toggle-read-btn {
+    padding: 0.45rem 0.7rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.book .remove-book-btn {
+    background: #ef4444;
+}
+
+.book .remove-book-btn:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+.book .toggle-read-btn {
+    background: #10b981;
+}
+
+.book .toggle-read-btn:hover {
+    background: #059669;
+    transform: translateY(-1px);
+}
+
+/* Small responsive tweaks */
+@media (max-width: 520px) {
+    body {
+        padding: 1rem;
+    }
+
+    .library-container,
+    section+section {
+        padding: 0.9rem;
+    }
+
+    .new-book-form {
+        padding: 0.9rem;
+    }
+}

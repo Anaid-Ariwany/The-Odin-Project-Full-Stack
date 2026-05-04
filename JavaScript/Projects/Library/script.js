@@ -73,8 +73,10 @@ function displayBooks() {
             <p>Author: ${book.author}</p>
             <p>Pages: ${book.pages}</p>
             <p>Status: ${book.read ? 'Read' : 'Not Read'}</p>
-            <button class="remove-book-btn">Remove</button>
-            <button class="toggle-read-btn">Toggle Read</button>
+            <div class="book-buttons">
+                <button class="remove-book-btn">Remove</button>
+                <button class="toggle-read-btn">Toggle Read</button>
+            </div>
         `;
 
         libraryContainer.appendChild(bookElement);
@@ -96,15 +98,17 @@ document.querySelector('.new-book-form').addEventListener('submit', function (ev
     document.getElementById('read').checked = false;
 });
 
+//toggle and remove buttons event delegation
 document.querySelector('.library-container').addEventListener('click', function (event) {
+    const bookElement = event.target.closest('.book');
+    if (!bookElement) return; // Clicked outside a book element
+
     if (event.target.classList.contains('remove-book-btn')) {
-        const bookElement = event.target.parentElement;
         const bookId = bookElement.getAttribute('data-id');
         removeBookFromLibrary(bookId);
     }
 
     if (event.target.classList.contains('toggle-read-btn')) {
-        const bookElement = event.target.parentElement;
         const bookId = bookElement.getAttribute('data-id');
         toggleBookReadStatus(bookId);
     }
@@ -127,5 +131,5 @@ function toggleBookReadStatus(bookId) {
 }
 
 document.querySelector('.add-book-btn').addEventListener('click', function () {
-    document.querySelector('.new-book-form').style.display = 'block';
+    document.querySelector('.new-book-form').style.display = 'flex';
 });
