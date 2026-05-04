@@ -12,6 +12,24 @@
 
 <body>
 
+    <section class="library-container"></section>
+
+    <section>
+        <button class="add-book-btn">Add Book</button>
+    </section>
+
+    <!-- form to add a new book -->
+    <form class="new-book-form" style="display: none;">
+        <input type="text" id="title" placeholder="Book Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="pages" placeholder="Number of Pages" required>
+        <label>
+            <input type="checkbox" id="read">
+            Read
+        </label>
+        <button type="submit">Add Book</button>
+    </form>
+
     <!-- custom js -->
     <script src="script.js"></script>
 </body>
