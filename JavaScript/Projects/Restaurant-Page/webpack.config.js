@@ -29,6 +29,13 @@ module.exports = {
 
     module: {
         rules: [
+            // Ensure project .js files can use ESM `import` syntax even when
+            // the package is treated as CommonJS by Node tooling.
+            {
+                test: /\.js$/i,
+                exclude: /node_modules/,
+                type: "javascript/auto",
+            },
             {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
