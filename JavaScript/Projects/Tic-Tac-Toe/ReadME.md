@@ -1,5 +1,7 @@
 # Project Tic Tac Toe
 
+[Live Demo](https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Tic-Tac-Toe/)
+
 ### Instructions
 
 #### Step 1: 

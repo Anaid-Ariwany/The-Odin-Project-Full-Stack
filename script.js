@@ -30,6 +30,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Library",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Library",
         source: "https://www.theodinproject.com/lessons/node-path-javascript-library"
+    },
+    {
+        name: "Tic Tac Toe",
+        description: "A classic Tic Tac Toe game built with JavaScript.",
+        image: "assets/projects/tic-tac-toe.webp",
+        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Tic-Tac-Toe",
+        github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Tic-Tac-Toe",
+        source: "https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe"
     }
     /* {
         name: "",
