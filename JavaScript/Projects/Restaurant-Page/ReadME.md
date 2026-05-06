@@ -1,5 +1,8 @@
 # Restaurant Page Project
 
+[live Demo Link](https://anaid-ariwany.github.io/Restaurant-Page/)
+
+- **NB:** _This project has been taken out as a standalone project. Here is the repo for the original project:_ [Restaurant Page Repo Link](https://github.com/Anaid-Ariwany/Restaurant-Page)
 
 ### Instructions
 

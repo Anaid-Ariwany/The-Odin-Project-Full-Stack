@@ -38,6 +38,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Tic-Tac-Toe",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Tic-Tac-Toe",
         source: "https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe"
+    },
+    {
+        name: "Restaurant Page",
+        description: "A responsive restaurant page built dynamically with JavaScript.",
+        image: "assets/projects/restaurant-page.webp",
+        live: "https://anaid-ariwany.github.io/Restaurant-Page/",
+        github: "https://github.com/Anaid-Ariwany/Restaurant-Page",
+        source: "https://www.theodinproject.com/lessons/node-path-javascript-restaurant-page"
     }
     /* {
         name: "",
