@@ -46,6 +46,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/Restaurant-Page/",
         github: "https://github.com/Anaid-Ariwany/Restaurant-Page",
         source: "https://www.theodinproject.com/lessons/node-path-javascript-restaurant-page"
+    },
+    {
+        name: "To-Do List",
+        description: "A simple to-do list application built with JavaScript.",
+        image: "assets/projects/to-do-list.webp",
+        live: "https://anaid-ariwany.github.io/To-Do-List/",
+        github: "https://github.com/Anaid-Ariwany/To-Do-List",
+        source: "https://www.theodinproject.com/lessons/node-path-javascript-todo-list"
     }
     /* {
         name: "",
