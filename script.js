@@ -54,6 +54,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/To-Do-List/",
         github: "https://github.com/Anaid-Ariwany/To-Do-List",
         source: "https://www.theodinproject.com/lessons/node-path-javascript-todo-list"
+    },
+    {
+        name: "Weather App",
+        description: "A simple weather application built with JavaScript and the Open-Meteo API.",
+        image: "assets/projects/Weather-App.webp",
+        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Weather-App",
+        github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Weather-App",
+        source: "https://www.theodinproject.com/lessons/node-path-javascript-weather-app"
     }
     /* {
         name: "",
