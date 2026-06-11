@@ -1,5 +1,7 @@
 # Project: Weather App
 
+[Live Demo](https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Weather-App/)
+
 ### Instructions
 1. Set up a blank HTML document with the appropriate links to your JavaScript and CSS files.
 

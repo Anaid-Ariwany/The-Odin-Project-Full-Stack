@@ -11,7 +11,7 @@ const metricsEl = document.querySelector("#metrics");
 const hourlyListEl = document.querySelector("#hourly-list");
 const dailyListEl = document.querySelector("#daily-list");
 const timezoneEl = document.querySelector("#timezone");
-const requestTimeoutMs = 8000;
+const requestTimeoutMs = 6000;
 const searchCache = new Map();
 
 const weatherCodes = {
@@ -49,7 +49,7 @@ const formatTemp = (value) => `${Math.round(value)} deg`;
 const formatPercent = (value) => `${Math.round(value)}%`;
 const formatSpeed = (value) => `${Math.round(value)} km/h`;
 
-const getCondition = (code) => weatherCodes[code] ?? ["Unknown conditions", "N/A"];
+const getCondition = (code) => weatherCodes[code] ?? ["Forecast available", "WX"];
 
 function getMetCondition(symbolCode = "") {
     const code = symbolCode.toLowerCase();
@@ -142,16 +142,47 @@ async function findLocation(query) {
 }
 
 async function fetchWeather(location) {
-    const url = new URL("https://api.met.no/weatherapi/locationforecast/2.0/compact");
-    url.search = new URLSearchParams({
-        lat: Number(location.latitude).toFixed(4),
-        lon: Number(location.longitude).toFixed(4),
-    });
+    try {
+        const url = new URL("https://api.met.no/weatherapi/locationforecast/2.0/compact");
+        url.search = new URLSearchParams({
+            lat: Number(location.latitude).toFixed(4),
+            lon: Number(location.longitude).toFixed(4),
+        });
 
-    return fetchJson(url, "Unable to load the forecast right now.");
+        return {
+            provider: "met",
+            data: await fetchJson(url, "Unable to load the forecast right now."),
+        };
+    } catch (error) {
+        const fallbackUrl = new URL("https://api.open-meteo.com/v1/forecast");
+        fallbackUrl.search = new URLSearchParams({
+            latitude: location.latitude,
+            longitude: location.longitude,
+            current:
+                "temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m",
+            hourly: "temperature_2m,weather_code",
+            daily: "weather_code,temperature_2m_max,temperature_2m_min",
+            timezone: location.timezone || "auto",
+            forecast_days: "7",
+            forecast_hours: "12",
+        });
+
+        return {
+            provider: "openMeteo",
+            data: await fetchJson(fallbackUrl, error.message),
+        };
+    }
 }
 
-function processWeatherData(location, weather) {
+function processWeatherData(location, weatherResult) {
+    if (weatherResult.provider === "openMeteo") {
+        return processOpenMeteoData(location, weatherResult.data);
+    }
+
+    return processMetData(location, weatherResult.data);
+}
+
+function processMetData(location, weather) {
     const country = location.country_code ? `, ${location.country_code}` : "";
     const admin = location.admin1 ? `, ${location.admin1}` : "";
     const placeName = `${location.name}${admin}${country}`;
@@ -185,6 +216,38 @@ function processWeatherData(location, weather) {
         },
         hourly,
         daily,
+    };
+}
+
+function processOpenMeteoData(location, weather) {
+    const country = location.country_code ? `, ${location.country_code}` : "";
+    const admin = location.admin1 ? `, ${location.admin1}` : "";
+    const placeName = `${location.name}${admin}${country}`;
+    const timezone = weather.timezone || location.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    return {
+        placeName,
+        timezone,
+        updatedAt: weather.current.time,
+        current: {
+            temperature: weather.current.temperature_2m,
+            humidity: weather.current.relative_humidity_2m,
+            wind: weather.current.wind_speed_10m,
+            pressure: null,
+            cloudCover: null,
+            condition: getCondition(weather.current.weather_code),
+        },
+        hourly: weather.hourly.time.map((time, index) => ({
+            time,
+            temperature: weather.hourly.temperature_2m[index],
+            condition: getCondition(weather.hourly.weather_code[index]),
+        })),
+        daily: weather.daily.time.map((time, index) => ({
+            time: `${time}T12:00:00`,
+            high: weather.daily.temperature_2m_max[index],
+            low: weather.daily.temperature_2m_min[index],
+            condition: getCondition(weather.daily.weather_code[index]),
+        })),
     };
 }
 
@@ -247,9 +310,9 @@ function renderMetrics(current) {
     const metrics = [
         ["Humidity", formatPercent(current.humidity)],
         ["Wind", formatSpeed(current.wind)],
-        ["Cloud cover", formatPercent(current.cloudCover)],
-        ["Pressure", `${Math.round(current.pressure)} hPa`],
-    ];
+        current.cloudCover === null ? null : ["Cloud cover", formatPercent(current.cloudCover)],
+        current.pressure === null ? null : ["Pressure", `${Math.round(current.pressure)} hPa`],
+    ].filter(Boolean);
 
     metricsEl.replaceChildren(
         ...metrics.map(([label, value]) => {
@@ -316,7 +379,7 @@ function renderWeather(forecast) {
 }
 
 async function handleSearch(event) {
-    event.preventDefault();
+    event?.preventDefault();
     const query = locationInput.value.trim();
 
     if (query.length < 2) {
