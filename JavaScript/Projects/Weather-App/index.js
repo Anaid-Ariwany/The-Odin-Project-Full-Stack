@@ -11,6 +11,8 @@ const metricsEl = document.querySelector("#metrics");
 const hourlyListEl = document.querySelector("#hourly-list");
 const dailyListEl = document.querySelector("#daily-list");
 const timezoneEl = document.querySelector("#timezone");
+const requestTimeoutMs = 8000;
+const searchCache = new Map();
 
 const weatherCodes = {
     0: ["Clear sky", "SUN"],
@@ -49,6 +51,31 @@ const formatSpeed = (value) => `${Math.round(value)} km/h`;
 
 const getCondition = (code) => weatherCodes[code] ?? ["Unknown conditions", "N/A"];
 
+function getMetCondition(symbolCode = "") {
+    const code = symbolCode.toLowerCase();
+
+    if (code.includes("thunder")) return ["Thunderstorm", "STM"];
+    if (code.includes("sleet")) return ["Sleet", "ICE"];
+    if (code.includes("snow")) return ["Snow", "SNW"];
+    if (code.includes("rain")) return ["Rain", "RAN"];
+    if (code.includes("fog")) return ["Fog", "FOG"];
+    if (code.includes("cloudy")) return ["Cloudy", "CLD"];
+    if (code.includes("partlycloudy")) return ["Partly cloudy", "MIX"];
+    if (code.includes("fair")) return ["Mainly clear", "SUN"];
+    if (code.includes("clearsky")) return ["Clear sky", "SUN"];
+
+    return ["Forecast available", "WX"];
+}
+
+function getMetSymbol(period) {
+    return (
+        period.data.next_1_hours?.summary?.symbol_code ||
+        period.data.next_6_hours?.summary?.symbol_code ||
+        period.data.next_12_hours?.summary?.symbol_code ||
+        ""
+    );
+}
+
 function setStatus(message = "", type = "info") {
     statusEl.textContent = message;
     statusEl.classList.toggle("status--error", type === "error");
@@ -62,20 +89,43 @@ function setLoading(isLoading) {
 }
 
 async function fetchJson(url, errorMessage) {
-    const response = await fetch(url);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), requestTimeoutMs);
 
-    if (!response.ok) {
-        throw new Error(errorMessage);
+    try {
+        const response = await fetch(url, { signal: controller.signal });
+
+        if (!response.ok) {
+            throw new Error(errorMessage);
+        }
+
+        return response.json();
+    } catch (error) {
+        if (error.name === "AbortError") {
+            throw new Error("The weather service is taking too long. Please try again.");
+        }
+
+        if (error instanceof TypeError) {
+            throw new Error("Unable to reach the weather service. Check your connection and try again.");
+        }
+
+        throw error;
+    } finally {
+        window.clearTimeout(timeout);
     }
-
-    return response.json();
 }
 
 async function findLocation(query) {
+    const cacheKey = query.toLowerCase();
+
+    if (searchCache.has(cacheKey)) {
+        return searchCache.get(cacheKey);
+    }
+
     const url = new URL("https://geocoding-api.open-meteo.com/v1/search");
     url.search = new URLSearchParams({
         name: query,
-        count: "5",
+        count: "1",
         language: "en",
         format: "json",
     });
@@ -87,20 +137,15 @@ async function findLocation(query) {
         throw new Error("No matching location found. Try a nearby city or a more specific name.");
     }
 
-    return matches.sort((a, b) => (b.population ?? 0) - (a.population ?? 0))[0];
+    searchCache.set(cacheKey, matches[0]);
+    return matches[0];
 }
 
 async function fetchWeather(location) {
-    const url = new URL("https://api.open-meteo.com/v1/forecast");
+    const url = new URL("https://api.met.no/weatherapi/locationforecast/2.0/compact");
     url.search = new URLSearchParams({
-        latitude: location.latitude,
-        longitude: location.longitude,
-        current:
-            "temperature_2m,relative_humidity_2m,apparent_temperature,is_day,weather_code,wind_speed_10m",
-        hourly: "temperature_2m,weather_code,precipitation_probability",
-        daily: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
-        timezone: "auto",
-        forecast_days: "7",
+        lat: Number(location.latitude).toFixed(4),
+        lon: Number(location.longitude).toFixed(4),
     });
 
     return fetchJson(url, "Unable to load the forecast right now.");
@@ -110,65 +155,100 @@ function processWeatherData(location, weather) {
     const country = location.country_code ? `, ${location.country_code}` : "";
     const admin = location.admin1 ? `, ${location.admin1}` : "";
     const placeName = `${location.name}${admin}${country}`;
-    const currentHourIndex = weather.hourly.time.findIndex((hour) => hour >= weather.current.time);
-    const start = Math.max(currentHourIndex, 0);
-    const end = start + 12;
+    const timezone = location.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const periods = weather.properties.timeseries ?? [];
+    const currentPeriod = periods[0];
+
+    if (!currentPeriod) {
+        throw new Error("No forecast data is available for that location.");
+    }
+
+    const currentDetails = currentPeriod.data.instant.details;
+    const hourly = periods.slice(0, 12).map((period) => ({
+        time: period.time,
+        temperature: period.data.instant.details.air_temperature,
+        condition: getMetCondition(getMetSymbol(period)),
+    }));
+    const daily = buildDailyForecast(periods, timezone);
 
     return {
         placeName,
-        timezone: weather.timezone_abbreviation || weather.timezone,
-        updatedAt: weather.current.time,
+        timezone,
+        updatedAt: weather.properties.meta.updated_at,
         current: {
-            temperature: weather.current.temperature_2m,
-            apparent: weather.current.apparent_temperature,
-            humidity: weather.current.relative_humidity_2m,
-            wind: weather.current.wind_speed_10m,
-            condition: getCondition(weather.current.weather_code),
-            isDay: weather.current.is_day,
+            temperature: currentDetails.air_temperature,
+            humidity: currentDetails.relative_humidity,
+            wind: currentDetails.wind_speed * 3.6,
+            pressure: currentDetails.air_pressure_at_sea_level,
+            cloudCover: currentDetails.cloud_area_fraction,
+            condition: getMetCondition(getMetSymbol(currentPeriod)),
         },
-        hourly: weather.hourly.time.slice(start, end).map((time, index) => {
-            const sourceIndex = start + index;
-            return {
-                time,
-                temperature: weather.hourly.temperature_2m[sourceIndex],
-                condition: getCondition(weather.hourly.weather_code[sourceIndex]),
-                precipitation: weather.hourly.precipitation_probability[sourceIndex],
-            };
-        }),
-        daily: weather.daily.time.map((time, index) => ({
-            time,
-            high: weather.daily.temperature_2m_max[index],
-            low: weather.daily.temperature_2m_min[index],
-            condition: getCondition(weather.daily.weather_code[index]),
-            precipitation: weather.daily.precipitation_probability_max[index],
-        })),
+        hourly,
+        daily,
     };
 }
 
-function formatTime(time) {
-    const [, hour = "00", minute = "00"] = time.match(/T(\d{2}):(\d{2})/) ?? [];
-    const hourNumber = Number(hour);
-    const period = hourNumber >= 12 ? "PM" : "AM";
-    const displayHour = hourNumber % 12 || 12;
-    return `${displayHour}:${minute} ${period}`;
+function buildDailyForecast(periods, timezone) {
+    const days = new Map();
+
+    periods.forEach((period) => {
+        const key = formatDateKey(period.time, timezone);
+        const details = period.data.instant.details;
+        const existing = days.get(key) ?? {
+            time: period.time,
+            high: details.air_temperature,
+            low: details.air_temperature,
+            condition: getMetCondition(getMetSymbol(period)),
+        };
+
+        existing.high = Math.max(existing.high, details.air_temperature);
+        existing.low = Math.min(existing.low, details.air_temperature);
+
+        if (period.time.includes("12:00:00")) {
+            existing.condition = getMetCondition(getMetSymbol(period));
+        }
+
+        days.set(key, existing);
+    });
+
+    return [...days.values()].slice(0, 7);
 }
 
-function formatDay(dateString) {
-    const [year, month, day] = dateString.split("-").map(Number);
-    const date = new Date(year, month - 1, day, 12);
+function formatDateKey(time, timezone) {
+    const parts = new Intl.DateTimeFormat("en", {
+        timeZone: timezone,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).formatToParts(new Date(time));
+
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+}
+
+function formatTime(time, timezone) {
     return new Intl.DateTimeFormat([], {
+        timeZone: timezone,
+        hour: "numeric",
+        minute: "2-digit",
+    }).format(new Date(time));
+}
+
+function formatDay(time, timezone) {
+    return new Intl.DateTimeFormat([], {
+        timeZone: timezone,
         weekday: "long",
         month: "short",
         day: "numeric",
-    }).format(date);
+    }).format(new Date(time));
 }
 
 function renderMetrics(current) {
     const metrics = [
-        ["Feels like", formatTemp(current.apparent)],
         ["Humidity", formatPercent(current.humidity)],
         ["Wind", formatSpeed(current.wind)],
-        ["Daylight", current.isDay ? "Day" : "Night"],
+        ["Cloud cover", formatPercent(current.cloudCover)],
+        ["Pressure", `${Math.round(current.pressure)} hPa`],
     ];
 
     metricsEl.replaceChildren(
@@ -184,29 +264,29 @@ function renderMetrics(current) {
     );
 }
 
-function renderHourly(hours) {
+function renderHourly(hours, timezone) {
     hourlyListEl.replaceChildren(
         ...hours.map((hour) => {
             const item = document.createElement("li");
             item.className = "hour-card";
             item.innerHTML = `
-        <time datetime="${hour.time}">${formatTime(hour.time)}</time>
+        <time datetime="${hour.time}">${formatTime(hour.time, timezone)}</time>
         <span aria-hidden="true">${hour.condition[1]}</span>
         <strong>${formatTemp(hour.temperature)}</strong>
-        <small>${formatPercent(hour.precipitation)} rain</small>
+        <small>${hour.condition[0]}</small>
       `;
             return item;
         }),
     );
 }
 
-function renderDaily(days) {
+function renderDaily(days, timezone) {
     dailyListEl.replaceChildren(
         ...days.map((day) => {
             const item = document.createElement("li");
             item.className = "day-card";
             item.innerHTML = `
-        <time datetime="${day.time}">${formatDay(day.time)}</time>
+        <time datetime="${day.time}">${formatDay(day.time, timezone)}</time>
         <span class="day-card__condition">${day.condition[1]} ${day.condition[0]}</span>
         <span class="day-card__temps">
           <span>${formatTemp(day.high)}</span>
@@ -222,15 +302,15 @@ function renderWeather(forecast) {
     const [conditionLabel, conditionIcon] = forecast.current.condition;
 
     currentHeadingEl.textContent = forecast.placeName;
-    updatedAtEl.textContent = `Updated ${formatTime(forecast.updatedAt)}`;
+    updatedAtEl.textContent = `Updated ${formatTime(forecast.updatedAt, forecast.timezone)}`;
     conditionEl.textContent = conditionLabel;
     weatherIconEl.textContent = conditionIcon;
     temperatureEl.textContent = formatTemp(forecast.current.temperature);
     timezoneEl.textContent = forecast.timezone;
 
     renderMetrics(forecast.current);
-    renderHourly(forecast.hourly);
-    renderDaily(forecast.daily);
+    renderHourly(forecast.hourly, forecast.timezone);
+    renderDaily(forecast.daily, forecast.timezone);
 
     weatherView.hidden = false;
 }
@@ -261,6 +341,3 @@ async function handleSearch(event) {
 }
 
 form.addEventListener("submit", handleSearch);
-
-locationInput.value = "Nairobi";
-form.requestSubmit();
