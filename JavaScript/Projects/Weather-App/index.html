@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A fast, accessible weather app with current conditions and local forecasts." />
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://api.open-meteo.com" />
+    <link rel="preconnect" href="https://geocoding-api.open-meteo.com" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+    <main class="app-shell">
+        <section class="hero" aria-labelledby="app-title">
+            <div class="hero__content">
+                <p class="eyebrow">Live local forecast</p>
+                <h1 id="app-title">Weather App</h1>
+                <p class="hero__copy">
+                    Search any city for current conditions, the next few hours, and a
+                    practical daily outlook.
+                </p>
+            </div>
+
+            <form class="search" id="search-form" autocomplete="off">
+                <label class="search__label" for="location-input">Location</label>
+                <div class="search__row">
+                    <input id="location-input" name="location" type="search" placeholder="Search city or place"
+                        minlength="2" required />
+                    <button type="submit">Search</button>
+                </div>
+                <p class="search__hint" id="search-hint">
+                    Try Nairobi, Seattle, Tokyo, or a nearby town.
+                </p>
+            </form>
+        </section>
+
+        <section class="status" id="status" role="status" aria-live="polite"></section>
+
+        <section class="weather-grid" id="weather-view" hidden>
+            <article class="current-panel" aria-labelledby="current-heading">
+                <div>
+                    <p class="panel-kicker" id="updated-at"></p>
+                    <h2 id="current-heading"></h2>
+                    <p class="condition" id="condition"></p>
+                </div>
+                <div class="current-panel__temp">
+                    <span id="weather-icon" aria-hidden="true"></span>
+                    <strong id="temperature"></strong>
+                </div>
+                <dl class="metrics" id="metrics"></dl>
+            </article>
+
+            <article class="forecast-panel" aria-labelledby="hourly-heading">
+                <div class="panel-header">
+                    <h2 id="hourly-heading">Next 12 Hours</h2>
+                    <span id="timezone"></span>
+                </div>
+                <ol class="hourly-list" id="hourly-list"></ol>
+            </article>
+
+            <article class="forecast-panel forecast-panel--wide" aria-labelledby="daily-heading">
+                <div class="panel-header">
+                    <h2 id="daily-heading">7 Day Forecast</h2>
+                    <span>High / Low</span>
+                </div>
+                <ol class="daily-list" id="daily-list"></ol>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
