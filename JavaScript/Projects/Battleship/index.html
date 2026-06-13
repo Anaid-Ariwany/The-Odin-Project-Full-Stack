@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battleship</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <main id="app" class="app-shell">
+    <section id="setup-screen" class="screen setup-screen">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Battleship</p>
+          <h1>Deploy your fleet</h1>
+        </div>
+        <div class="toolbar" aria-label="Placement controls">
+          <button id="rotate-button" class="button secondary" type="button">Horizontal</button>
+          <button id="randomize-button" class="button secondary" type="button">Randomize</button>
+          <button id="clear-button" class="button ghost" type="button">Clear</button>
+          <button id="start-button" class="button primary" type="button" disabled>Start battle</button>
+        </div>
+      </div>
+
+      <div class="setup-layout">
+        <div class="board-panel">
+          <div id="setup-board" class="board" aria-label="Ship placement board"></div>
+        </div>
+        <aside class="side-panel" aria-label="Fleet setup">
+          <p id="setup-status" class="status" data-tone="neutral"></p>
+          <ol id="ship-queue" class="ship-list"></ol>
+        </aside>
+      </div>
+    </section>
+
+    <section id="battle-screen" class="screen battle-screen" hidden>
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Command center</p>
+          <h1>Battle stations</h1>
+        </div>
+        <button id="new-game-button" class="button secondary" type="button">New game</button>
+      </div>
+
+      <p id="status" class="status battle-status" data-tone="neutral"></p>
+
+      <div class="battle-layout">
+        <section class="combat-zone" aria-labelledby="player-heading">
+          <div class="board-heading">
+            <h2 id="player-heading">Your waters</h2>
+            <span>Defense</span>
+          </div>
+          <div id="player-board" class="board" aria-label="Your board"></div>
+          <ul id="fleet-health" class="health-list" aria-label="Your fleet health"></ul>
+        </section>
+
+        <section class="combat-zone" aria-labelledby="enemy-heading">
+          <div class="board-heading">
+            <h2 id="enemy-heading">Enemy waters</h2>
+            <span>Targeting</span>
+          </div>
+          <div id="enemy-board" class="board enemy-board" aria-label="Enemy board"></div>
+          <ul id="enemy-health" class="health-list" aria-label="Enemy fleet health"></ul>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+
+</html>
