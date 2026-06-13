@@ -62,6 +62,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Weather-App",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Weather-App",
         source: "https://www.theodinproject.com/lessons/node-path-javascript-weather-app"
+    },
+    {
+        name: "Battleship",
+        description: "A classic battleship game built with JavaScript.",
+        image: "assets/projects/battleship.webp",
+        live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Battleship",
+        github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Battleship",
+        source: "https://www.theodinproject.com/lessons/node-path-javascript-battleship"
     }
     /* {
         name: "",
