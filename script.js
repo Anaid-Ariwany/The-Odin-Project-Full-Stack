@@ -78,6 +78,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/CV-Application/",
         github: "https://github.com/Anaid-Ariwany/CV-Application",
         source: "https://www.theodinproject.com/lessons/node-path-react-new-cv-application"
+    },
+    {
+        name: "Memory Card Game",
+        description: "A simple memory card game built with React and Pokemon API.",
+        image: "assets/projects/memory-card.webp",
+        live: "https://anaid-ariwany.github.io/Memory-Card/",
+        github: "https://github.com/Anaid-Ariwany/Memory-Card",
+        source: "https://www.theodinproject.com/lessons/node-path-react-new-memory-card"
     }
     /* {
         name: "",
