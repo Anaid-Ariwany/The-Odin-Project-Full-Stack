@@ -1,0 +1,150 @@
+.app-shell {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 3rem;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.75fr);
+    gap: 1.5rem;
+    align-items: stretch;
+    margin-bottom: 1.5rem;
+}
+
+.hero__copy,
+.hero__card,
+.preview-panel {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(9, 15, 29, 0.72);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(18px);
+}
+
+.hero__copy {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 28px;
+}
+
+.hero__card {
+    padding: 1.5rem;
+    border-radius: 24px;
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+}
+
+.hero__card-label,
+.eyebrow {
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: #93a4c7;
+}
+
+.hero h1 {
+    margin: 0;
+    max-width: 12ch;
+    font-size: clamp(2.7rem, 5vw, 4.9rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+}
+
+.hero__text {
+    max-width: 60ch;
+    color: #b9c5de;
+    font-size: 1.02rem;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.editor-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.preview-panel {
+    position: sticky;
+    top: 1.5rem;
+    border-radius: 28px;
+    padding: 1.5rem;
+}
+
+.preview-panel__header h2 {
+    margin: 0.35rem 0 0;
+    font-size: 1.5rem;
+}
+
+.resume {
+    margin-top: 1rem;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(16, 24, 42, 0.88), rgba(8, 12, 22, 0.88));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.25rem;
+}
+
+.resume__header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resume__header h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.55rem;
+}
+
+.resume__header p,
+.resume__section p {
+    margin: 0.18rem 0;
+    color: #c3d0e8;
+}
+
+.resume__section {
+    padding-top: 1rem;
+}
+
+.resume__section+.resume__section {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 1rem;
+}
+
+.resume__section h4 {
+    margin: 0 0 0.45rem;
+    color: #8eb5ff;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.resume__primary {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+
+    .hero,
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-panel {
+        position: static;
+    }
+}
+
+@media (max-width: 640px) {
+    .app-shell {
+        width: min(100% - 1rem, 1000px);
+        padding: 1rem 0 2rem;
+    }
+
+    .hero h1 {
+        max-width: 100%;
+    }
+}
