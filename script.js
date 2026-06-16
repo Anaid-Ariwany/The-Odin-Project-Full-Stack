@@ -70,6 +70,14 @@ const projects = [
         live: "https://anaid-ariwany.github.io/The-Odin-Project-Full-Stack/JavaScript/Projects/Battleship",
         github: "https://github.com/Anaid-Ariwany/The-Odin-Project-Full-Stack/tree/main/JavaScript/Projects/Battleship",
         source: "https://www.theodinproject.com/lessons/node-path-javascript-battleship"
+    },
+    {
+        name: "CV-Application",
+        description: "A simple CV application built with React.",
+        image: "assets/projects/cv-application.webp",
+        live: "https://anaid-ariwany.github.io/CV-Application/",
+        github: "https://github.com/Anaid-Ariwany/CV-Application",
+        source: "https://www.theodinproject.com/lessons/node-path-react-new-cv-application"
     }
     /* {
         name: "",
